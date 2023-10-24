@@ -1,5 +1,6 @@
 #include "sort.h"
-
+#include <stdlib.h>
+#include <stdio.h>
 /**
  * merge_compare - compares merges
  * @array: the integer array to sort

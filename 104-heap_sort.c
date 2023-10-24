@@ -59,6 +59,11 @@ void heap(int *array, size_t size)
 {
 	ssize_t start;
 
+	// Check if the array is already a heap.
+	if (is_heap(array, size)) {
+		return;
+	}
+
 	start = parent(size - 1);
 	while (start >= 0)
 	{
@@ -66,6 +71,25 @@ void heap(int *array, size_t size)
 		start--;
 	}
 }
+
+/**
+ * is_heap - Checks if the array is a heap.
+ * @array: The array to be checked.
+ * @size: The size of the array.
+ *
+ * Return: True if the array is a heap, false otherwise.
+ */
+bool is_heap(int *array, size_t size)
+{
+	for (size_t i = 0; i < size / 2; i++) {
+		if (array[i] < array[leftchild(i)] ||
+			array[i] < array[leftchild(i) + 1]) {
+			return false;
+		}
+	}
+	return true;
+}
+
 /**
  * heap_sort - Sort array using the Heap sort algorithm
  * @array: Array to be sorted
